@@ -1,11 +1,10 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/">About</router-link> |
-    <router-link to="/">Product</router-link> |
+    <router-link to="/about">About</router-link> |
+    <router-link to="/product">Product List</router-link>
   </div>
-<!--  <router-view/>-->
-
+  <router-view/>
 </template>
 
 <style lang="scss">
@@ -27,9 +26,3 @@
   }
 }
 </style>
-<script>
-import ProductListComponent from "@/components/ProductListComponent";
-export default {
-  components: {ProductListComponent}
-}
-</script>
