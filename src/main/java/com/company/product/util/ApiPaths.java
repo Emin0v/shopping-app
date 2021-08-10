@@ -7,4 +7,8 @@ public class ApiPaths {
     public static final class ProductCtrl{
         public static final String CTRL = BASE_PATH + "/products";
     }
+
+    public static final class CategoryCtrl{
+        public static final String CTRL = BASE_PATH + "/category";
+    }
 }
