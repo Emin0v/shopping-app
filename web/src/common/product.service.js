@@ -6,5 +6,5 @@ export function getProductDetailById(id) {
 }
 
 export function getAll() {
-    return get('api/products');
+    return get('products');
 }

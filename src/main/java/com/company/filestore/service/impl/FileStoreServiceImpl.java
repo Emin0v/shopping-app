@@ -1,20 +1,35 @@
 package com.company.filestore.service.impl;
 
 import com.company.filestore.service.FileStoreService;
+import com.company.filestore.service.MinioFileService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import reactor.core.publisher.Mono;
 
-import java.io.File;
-import java.nio.file.Files;
+import java.io.InputStream;
 
+
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class FileStoreServiceImpl implements FileStoreService {
 
-    @Override
-    public Mono<byte[]> getImage(String id) throws Exception {
-        File file = ResourceUtils.getFile("classpath:product-images/phone.png");
+    private final MinioFileService minioFileService;
 
-        return Mono.just(Files.readAllBytes(file.toPath()));
+    @Override
+    public Mono<byte[]> getImage(String id) {
+        return Mono.just(minioFileService.get(id));
+    }
+
+    @Override
+    public void saveImage(String id, InputStream isFile) {
+        minioFileService.save(id, MediaType.IMAGE_JPEG_VALUE, isFile);
+    }
+
+    @Override
+    public void deleteImage(String id) {
+        minioFileService.delete(id);
     }
 }

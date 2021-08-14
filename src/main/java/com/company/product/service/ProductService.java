@@ -1,5 +1,6 @@
 package com.company.product.service;
 
+import com.company.product.dto.product.ProductDetailResponse;
 import com.company.product.dto.product.ProductResponse;
 import com.company.product.dto.product.ProductSaveRequest;
 import reactor.core.publisher.Flux;
@@ -12,4 +13,6 @@ public interface ProductService {
      ProductResponse save(ProductSaveRequest request);
 
      Mono<Long> count();
+
+     Mono<ProductDetailResponse> getProductDetail(String id);
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    {{ productFeatures }}
+   <span style="text-align-last: left;" v-html="productFeatures"></span>
   </div>
   <hr/>
   <div class="row">

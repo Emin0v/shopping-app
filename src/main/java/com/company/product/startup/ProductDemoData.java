@@ -1,5 +1,6 @@
 package com.company.product.startup;
 
+import com.company.filestore.service.FileStoreService;
 import com.company.product.dto.category.CategoryResponse;
 import com.company.product.dto.category.CategorySaveRequest;
 import com.company.product.dto.product.ProductSaveRequest;
@@ -33,6 +34,7 @@ public class ProductDemoData {
     private final ProductService productService;
     private final CategoryService categoryService;
     private final ProductEsRepository productEsRepository;
+    private final FileStoreService fileStoreService;
 
 
     @EventListener(ApplicationReadyEvent.class)
@@ -56,13 +58,13 @@ public class ProductDemoData {
 
                 String imgUuid = UUID.randomUUID().toString();
 
-//                byte[] file = null;
-//                try {
-//                    file = Files.readAllBytes(ResourceUtils.getFile("classpath:product-images/phone.jpg").toPath());
-//                } catch (IOException e) {
-//                    log.error("File read error : ", e);
-//                }
-//                fileStoreService.saveImage(imgUuid, new ByteArrayInputStream(file));
+                byte[] file = null;
+                try {
+                    file = Files.readAllBytes(ResourceUtils.getFile("classpath:product-images/phone.jpg").toPath());
+                } catch (IOException e) {
+                    log.error("File read error : ", e);
+                }
+                fileStoreService.saveImage(imgUuid, new ByteArrayInputStream(file));
 
 
                 productService.save(

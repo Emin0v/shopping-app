@@ -1,6 +1,7 @@
 package com.company.filestore.api;
 
 import com.company.filestore.service.FileStoreService;
+import com.company.product.util.ApiPaths;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.core.io.buffer.DefaultDataBufferFactory;
@@ -13,7 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/filestore")
+@RequestMapping(ApiPaths.FileStoreCtrl.CTRL)
 @RequiredArgsConstructor
 @CrossOrigin
 public class FileStoreController {
