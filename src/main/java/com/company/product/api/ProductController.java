@@ -22,10 +22,11 @@ public class ProductController {
         return productService.getAll();
     }
 
-
     @GetMapping("/{id}")
     public Mono<ProductDetailResponse> getProductDetail(@PathVariable("id") String id) {
         return productService.getProductDetail(id);
     }
+
+
 
 }

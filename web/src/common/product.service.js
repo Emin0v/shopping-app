@@ -5,6 +5,10 @@ export function getProductDetailById(id) {
     return get('products/' + id);
 }
 
-export function getAll() {
-    return get('products');
+export function getAllByCategoryId(id) {
+    return get('category/'+ id);
+}
+
+export function getCategories(){
+    return get('category')
 }

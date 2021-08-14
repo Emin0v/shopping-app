@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import {getAll} from "@/common/product.service";
+import {getAllByCategoryId} from "@/common/product.service";
 import {BASE_URL} from "@/common/config";
 export default {
   name: 'ProductListComponent',
@@ -72,15 +72,17 @@ export default {
   data() {
     return {products: []}
   },
-  created() {
-    this.getProducts();
-  },
-  methods: {
-    getProducts() {
-      getAll().then(response => {
-        this.products = response.data;
-      })
+  mounted() {
+    getAllByCategoryId(this.$route.params.id).then(response=>{
+      this.products = response.data;
+    })
     },
+  methods: {
+    // getProducts() {
+    //   getAllByCategoryId().then(response => {
+    //     this.products = response.data;
+    //   })
+    // },
     getImageUrl(id) {
       return BASE_URL + 'filestore/' + id;
     }

@@ -11,5 +11,9 @@ public interface ProductEsService {
 
     Flux<ProductEs> findAll();
 
+    Flux<ProductEs> findAllByCategoryId(String categoryId);
+
     Mono<ProductEs> findById(String id);
+
+
 }

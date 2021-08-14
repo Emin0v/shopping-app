@@ -39,6 +39,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Flux<ProductResponse> getAllByCategoryId(String categoryId) {
+        return productEsService.findAllByCategoryId(categoryId).map(this::mapToDto);
+    }
+
+    @Override
     public ProductResponse save(ProductSaveRequest request) {
         Product product = Product.builder()
                 .active(Boolean.TRUE)

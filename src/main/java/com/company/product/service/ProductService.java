@@ -10,6 +10,8 @@ public interface ProductService {
 
      Flux<ProductResponse> getAll();
 
+     Flux<ProductResponse> getAllByCategoryId(String categoryId);
+
      ProductResponse save(ProductSaveRequest request);
 
      Mono<Long> count();

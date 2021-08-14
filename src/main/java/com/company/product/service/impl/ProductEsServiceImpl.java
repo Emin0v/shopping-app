@@ -53,6 +53,11 @@ public class ProductEsServiceImpl implements ProductEsService {
     }
 
     @Override
+    public Flux<ProductEs> findAllByCategoryId(String categoryId) {
+        return productEsRepository.findAllByCategory_Id(categoryId);
+    }
+
+    @Override
     public Mono<ProductEs> findById(String id) {
         return productEsRepository.findById(id);
     }
