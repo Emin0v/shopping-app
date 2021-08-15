@@ -12,3 +12,7 @@ export function getAllByCategoryId(id) {
 export function getCategories(){
     return get('category')
 }
+
+export function getAllProducts(){
+    return get('products')
+}

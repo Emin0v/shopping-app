@@ -19,9 +19,43 @@
       </form>
     </div>
   </nav>
+  <div class="container aqua-background mb-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a class="product-name btn btn-secondary m-1" v-for="category in categories" :key="category"
+         v-bind:href="'/category/' + category.id">
+        {{ category.name }}
+      </a>
+    </div>
+  </div>
 
   <router-view/>
+
 </template>
+
+<script>
+import {getCategories} from "@/common/product.service";
+import {BASE_URL} from "@/common/config";
+
+export default {
+  name: 'home',
+  data() {
+    return {categories: {}}
+  },
+  created() {
+    this.getCategories();
+  },
+
+  methods: {
+    getCategories() {
+      getCategories().then(response => {
+        this.categories = response.data;
+      });
+    }
+
+  }
+
+}
+</script>
 
 <style lang="scss">
 #app {

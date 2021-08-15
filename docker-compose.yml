@@ -17,8 +17,8 @@ services:
       - 9300:9300
     environment:
       discovery.type: single-node
-#    volumes:
-#      - esdata:/usr/share/elasticsearch/data
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
 
   shopping-s3:
     image: minio/minio:RELEASE.2021-02-11T08-23-43Z
@@ -28,3 +28,7 @@ services:
       MINIO_ROOT_USER: shopping-minio
       MINIO_ROOT_PASSWORD: shopping-minio
     command: server /data
+
+volumes:
+  esdata:
+    driver: local
